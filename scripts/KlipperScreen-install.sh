@@ -35,12 +35,8 @@ install_graphical_backend()
   while true; do
     if [ -z "$BACKEND" ]; then
       echo_text ""
-      echo_text "Choose graphical backend"
-      echo_ok "Default is Xserver"
-      echo_text "Wayland is EXPERIMENTAL, needs kms/drm drivers, and doesn't support DPMS"
-      echo_text ""
-      echo "Press enter for default (Xserver)"
-      read -r -e -p "Backend Xserver or Wayland (cage)? [X/w]" BACKEND
+      echo_text "Defaulting to Xserver"
+      BACKEND="X"
     fi
     if [[ "$BACKEND" =~ ^[wW]$ ]]; then
         echo_text "Installing Wayland Cage Kiosk"
@@ -290,8 +286,9 @@ start_KlipperScreen()
 install_network_manager()
 {
     if [ -z "$NETWORK" ]; then
-        echo "Press enter for default (Yes)"
+        #echo "Press enter for default (Yes)"
         read -r -e -p "Install NetworkManager for the network panel [Y/n]" NETWORK
+        NETWORK="Y"  # Automatically set to default value
     fi
     
     if [[ $NETWORK =~ ^[nN]$ ]]; then
