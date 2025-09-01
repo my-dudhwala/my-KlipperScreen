@@ -347,7 +347,7 @@ create_virtualenv
 create_policy
 fix_fbturbo
 add_desktop_file
-install_network_manager
+#install_network_manager
 if [ -z "$START" ] || [ "$START" -eq 0 ]; then
     echo_ok "KlipperScreen was installed"
 else
